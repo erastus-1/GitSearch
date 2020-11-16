@@ -31,7 +31,7 @@ export class RepoServiceService {
       email: string;
     }
     let searchUser =
-      'http://api.github.com/users/' +
+      'https://api.github.com/users/' +
       searchTerm +
       '?access_token=' +
       environment.ApiKey;
@@ -66,7 +66,7 @@ export class RepoServiceService {
       language: string;
     }
     let searchUser =
-      'http://api.github.com/users/' +
+      'https://api.github.com/users/' +
       searchTerm +
       '/repos?access_token=' +
       environment.ApiKey;
