@@ -1,0 +1,86 @@
+<body>
+<app-search-form (searchName)='searchUser($event)'></app-search-form>
+
+<div class="=container">
+  <div class="Details">
+    <h3 style="font-style: italic; font-weight: bolder;">
+      Personal Details :<small class="text-muted">Public GitHub repositories</small>
+    </h3>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card" style="display: flexbox;">
+          <div class="card-body">
+            <div class="card-title">
+              <h5 *ngIf="user.name" appStrikethrough>
+                <strong>{{ user.name }}</strong>
+              </h5>
+              <img src="{{ user.avatar_url }}" class="width-full border bg-white" style="border-radius: 23em;"
+                alt="woman avatar" style="height: auto" alt width="260" height="260" />
+            </div>
+            <div class="card-text">
+              <p *ngIf="user.bio">Bio {{ user.bio }}</p>
+              <p *ngIf="user.login">GitHub User Name: <b>{{ user.login }}</b></p>
+              <p *ngIf="user.public_repos">
+                Number of Public Resositories: {{ user.public_repos }}
+              </p>
+              <p *ngIf="user.html_url" style="color: blue;">
+                <i> User GitHub Link: <b>{{ user.html_url }}</b></i>
+              </p>
+              <p> <b>Has been a GitHub member since: </b><span class="font-weight-bold">{{
+                    user.created_at | dateCount
+                  }}</span></p>
+              <div class="footer">
+                <span class="badge badge-pill badge-primary">{{ user.followers }} Followers</span>
+                <span class="badge badge-pill badge-success ml-2">{{ user.public_repos }} Repositories</span>
+                <span class="badge badge-pill badge-danger ml-2">{{ user.following }} Following</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- User public repositories to be displayed here -->
+
+        <div class="text-center p-5">
+          <h3 style="text-align: center; font-style: italic;"><b>Public GitHub Repositories</b></h3>
+        </div>
+        <div class="row">
+          <div class="col-sm-6" *ngFor="let repo of repos">
+            <div class="card" appStrikethrough style="display: flexbox;">
+              <div class="card-body">
+                <div class="card-title">
+                  <h5><strong>{{repo.name}}</strong></h5>
+                </div>
+                <div class="card-text">
+                  <p>Repository Description: <br/>
+                    <b><small class="text-muted"> {{repo.description}}</small></b></p>
+                  <p>This repository was Updated<strong> {{repo.updated_at | dateCount}}</strong></p>
+                  <p>This repository was Created <strong> {{repo.created_at | dateCount}}</strong> </p>
+                  <p> Language used is <strong> {{repo.language}}</strong></p>
+                </div>
+                <div class="footer">
+                  <span class="badge badge-success">StarGazers {{ repo.stargazers_count }}Stars</span>
+                  <span class="badge badge-warning ml-2">WatcherCount {{ repo.watchers_count }}Stars</span>
+                  <br/>
+                  <hr>
+                  <a href='{{repo.html_url}}' target="_blank" class="btn btn-primary">Check this Repository</a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+</div>
+</body>
+<footer class="bg-dark">
+  <div class="text-center text-white" style="text-align: center;">
+    <p>
+      <b>
+        All Rights Reserved 2020 <br />
+        Copyright &copy; erastuskariuki15@gmail.com</b
+      >
+    </p>
+    <br />
+  </div>
+</footer>
+
